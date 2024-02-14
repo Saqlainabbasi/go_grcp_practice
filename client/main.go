@@ -27,8 +27,9 @@ func main() {
 
 	//create a name list of user
 	//use the pb file to make list
-	// names:=&pb.NameList{
-	// 	Name: []string{"Bob","Alice","Jhon"},
-	// }
-	callSayHello(client)
+	names := &pb.NameList{
+		Names: []string{"Bob", "Alice", "Jhon"},
+	}
+	// callSayHello(client)
+	callSayHelloServerStream(client, names)
 }

@@ -11,7 +11,7 @@ import (
 // reciever func
 // takes param like pointer to pb nameList and stream
 // returns pointer pb Response and error
-func (s *helloServer) callSayHelloServerStreaming(req *pb.NameList, stream pb.GreetService_SayHelloServerStreamingServer) error {
+func (s *helloServer) SayHelloServerStreaming(req *pb.NameList, stream pb.GreetService_SayHelloServerStreamingServer) error {
 	//print the name list
 	log.Printf("got the req with names %v", req.Names)
 	//loop over the name list
