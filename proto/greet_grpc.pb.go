@@ -87,7 +87,7 @@ func (c *greetServiceClient) SayHelloClientStreaming(ctx context.Context, opts .
 }
 
 type GreetService_SayHelloClientStreamingClient interface {
-	Send(*NameList) error
+	Send(*HelloRequest) error
 	CloseAndRecv() (*MessageList, error)
 	grpc.ClientStream
 }
@@ -96,7 +96,7 @@ type greetServiceSayHelloClientStreamingClient struct {
 	grpc.ClientStream
 }
 
-func (x *greetServiceSayHelloClientStreamingClient) Send(m *NameList) error {
+func (x *greetServiceSayHelloClientStreamingClient) Send(m *HelloRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -227,7 +227,7 @@ func _GreetService_SayHelloClientStreaming_Handler(srv interface{}, stream grpc.
 
 type GreetService_SayHelloClientStreamingServer interface {
 	SendAndClose(*MessageList) error
-	Recv() (*NameList, error)
+	Recv() (*HelloRequest, error)
 	grpc.ServerStream
 }
 
@@ -239,8 +239,8 @@ func (x *greetServiceSayHelloClientStreamingServer) SendAndClose(m *MessageList)
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *greetServiceSayHelloClientStreamingServer) Recv() (*NameList, error) {
-	m := new(NameList)
+func (x *greetServiceSayHelloClientStreamingServer) Recv() (*HelloRequest, error) {
+	m := new(HelloRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
